@@ -4,58 +4,59 @@
 
 package oss.kafka.ui.swing.shell;
 
-import java.awt.*;
 import javax.swing.*;
-import net.miginfocom.swing.*;
+import java.awt.*;
 
-/**
- * @author parvezshah
- */
 public class Shell extends JFrame {
-    public Shell() {
-        initComponents();
-    }
 
-    private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - parvezshah
+  private Container container;
+  private JMenuBar menuBar;
 
-        //======== this ========
-        Container contentPane = getContentPane();
-        contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]",
-            // rows
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
-        pack();
-        setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    }
+  public Shell() {
+    initComponents();
+  }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - parvezshah
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+  private void initComponents() {
+    // Application main panel
+    JPanel mainPanel = new JPanel();
+    mainPanel.setBackground(Color.BLACK);
+    mainPanel.setLayout(new GridBagLayout());
+    GridBagConstraints gbc = new GridBagConstraints();
+
+    Navigation navigation = new Navigation();
+    gbc.gridx = gbc.gridy = 0;
+    gbc.gridwidth = gbc.gridheight = 1;
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.anchor = GridBagConstraints.NORTHWEST;
+    gbc.weightx = gbc.weighty = 20;
+    // add(panel1, gbc); // add component to the ContentPane
+
+    navigation.setBackground(new Color(76, 83, 89));
+    mainPanel.add(navigation, gbc);
+
+    container = new Container();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 2;
+    gbc.weightx = /*gbc.weighty = */ 80;
+    gbc.insets = new Insets(2, 2, 2, 2);
+    //  add(panel3, gbc); // add component to the ContentPane
+
+    container.setBackground(Color.WHITE);
+    mainPanel.add(container, gbc);
+
+    // mainPanel.add(container);
+
+    // Set the window to be visible as the default to be false
+    // mainPanel.setPreferredSize();
+    // mainPanel.setPreferredSize();
+
+    menuBar = new JMenuBar();
+    this.setJMenuBar(menuBar);
+
+    this.add(mainPanel);
+
+    this.pack();
+  }
 }
